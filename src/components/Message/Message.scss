@@ -1,0 +1,41 @@
+.msg {
+  padding: 1rem 1.5rem;
+  border: 1px solid lightgrey;
+  margin: 2rem 0;
+  border-radius: 8px;
+  background-color: rgb(243, 235, 235);
+  position: relative;
+
+  &--right {
+    margin-left: 25%;
+    color: rgb(121, 109, 6);
+
+    .msg__time {
+      left: auto;
+      right: 10px;
+    }
+  }
+
+  &--left {
+    margin-right: 25%;
+    color: rgb(0, 58, 5);
+  }
+
+  &__time {
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 5px;
+    background-color: rgb(243, 235, 235);
+    border: 1px solid #999;
+    font-size: 14px;
+    line-height: 1.3;
+    border-radius: 4px;
+  }
+
+  &__user-name {
+    font-weight: bold;
+  }
+}
