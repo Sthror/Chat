@@ -1,7 +1,7 @@
 import "./AddMessage.scss";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { collection, setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { SyntheticEvent, useContext, useState } from "react";
 import { Context } from "../../index";
 
@@ -12,10 +12,9 @@ interface AddMessageIProps {
 export function AddMessage({ user }: AddMessageIProps) {
   const [newMessage, setNewMessage] = useState("");
   const { db } = useContext(Context);
-  const messagesRef = collection(db, "messages");
   const submitForm = (e: SyntheticEvent) => {
     e.preventDefault();
-    setDoc(doc(messagesRef, "messages"), {
+    addDoc(collection(db, "messages"), {
       date: serverTimestamp(),
       userID: user,
       message: newMessage,

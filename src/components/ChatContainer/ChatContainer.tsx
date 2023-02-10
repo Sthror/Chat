@@ -1,34 +1,30 @@
 import Message from "../Message/Message";
-import { messagesData } from "../../data/Messages";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { AddMessage } from "../AddMessage/AddMessage";
 import { Authorization } from "../Authorization/Authorization";
-import { doc, setDoc } from "firebase/firestore";
 import "./ChatContainer.scss";
-import { Context } from "../../index";
+import { GetMessages } from "../../data/getMessages";
 
-export const ChatContainer = () => {
+interface ChatContainerIprops {
+  userId: number;
+}
+
+export const ChatContainer = ({ userId }: ChatContainerIprops) => {
+  const messagesList = GetMessages();
+
   useEffect(() => {
     window.scrollTo({ top: 100, behavior: "smooth" });
   }, []);
-
-  const { db } = useContext(Context);
-
-  setDoc(doc(db, "cities", "LA"), {
-    name: "Los Angeles",
-    state: "CA",
-    country: "USA",
-  });
 
   return (
     <>
       <Authorization />
       <article className="chat-block">
-        {messagesData.map((message) => (
-          <Message text={message.text} modification={message.modifaction as "left" | "right"} time={message.time} name={message.user} />
+        {messagesList.map((message) => (
+          <Message text={message.message} modification={message.userID === userId ? "right" : "left"} time={message.date} />
         ))}
       </article>
-      <AddMessage user={1} />
+      <AddMessage user={userId} />
     </>
   );
 };

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ChatContainer } from "./components/ChatContainer/ChatContainer";
 
 function App() {
-  return <ChatContainer />;
+  return <ChatContainer userId={1} />;
 }
 
 export default App;
