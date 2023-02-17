@@ -6,7 +6,7 @@ import { Authorization } from "./components/Authorization/Authorization";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const messagesList = GetMessages();
+  // const messagesList = GetMessages();
   return isAuth ? <ChatContainer userId={2} /> : <Authorization />;
 }
 
