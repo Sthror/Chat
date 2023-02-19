@@ -5,7 +5,7 @@ import { ChatContainer } from "./components/ChatContainer/ChatContainer";
 import { Authorization } from "./components/Authorization/Authorization";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
   // const messagesList = GetMessages();
   return isAuth ? <ChatContainer userId={2} /> : <Authorization />;
 }

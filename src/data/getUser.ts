@@ -1,13 +1,21 @@
 import { useContext, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
 import { Context } from "../index";
-export const GetMessages = (id: number) => {
-  const [user, setUser] = useState(0);
+import MessageIprops from "../types/message";
+
+export const GetUser = () => {
+  const [messagesList, setMessagesList] = useState<MessageIprops[]>([]);
   const { db } = useContext(Context);
-  const userRef = db.collection("Users");
-  const snapshot = userRef.where("UserID", "==", id).get();
-  snapshot.then((data) => data.forEach((doc: any) => {
-    console.log(doc.id, "=>", doc.data());
+
+  const querySnapshot = getDocs(collection(db, "Users"));
+  querySnapshot.then((doc: any) => {
+    let messages: MessageIprops[] = [];
+    doc.forEach((element: any) => {
+      messages.push(element.data());
+    });
+    setMessagesList(messages);
+    console.log(messages);    
   });
 
-  return user;
+  return messagesList;
 };
