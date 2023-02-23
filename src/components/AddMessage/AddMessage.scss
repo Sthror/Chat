@@ -1,13 +1,37 @@
-
 .add-message {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
 
+  &__form {
+    display: flex;
+    gap: 1rem;
+    flex: 1 1 auto;
+  }
+  
   &__field {
     flex: 1 1 auto;
     margin: 0;
+  }
+
+  &__emoji {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+
+    &-wrapper {
+      width: 24px;
+      height: 24px;
+    }
+
+    &-btn {
+      border: 0;
+      box-shadow: 0;
+      background-color: transparent;
+      outline: 0;
+    }
   }
 }

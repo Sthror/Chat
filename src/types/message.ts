@@ -4,7 +4,8 @@ interface MessageIprops {
     seconds: number;
   };
   message: string;
-  userID: number;
+  userId: number;
+  userName: string;
 }
 
 export default MessageIprops;
